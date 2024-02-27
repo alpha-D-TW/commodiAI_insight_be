@@ -26,7 +26,8 @@ def create_bucket():
     bucket_name = envs.get('s3_bucket')
     try:
         s3_client = get_s3_client()
-        s3_client.create_bucket(Bucket=bucket_name)
+        s3_client.create_bucket(Bucket=bucket_name, CreateBucketConfiguration={
+            'LocationConstraint': 'us-west-1'})
     except ClientError as e:
         print(f"Error happened when create bucket {bucket_name}, {e}")
         return False
