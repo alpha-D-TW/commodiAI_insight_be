@@ -1,5 +1,6 @@
 [
   "quarterly_data",
   "yearly_data",
-  "monthly_data"
+  "monthly_data",
+  "commodity_futures_data"
 ]

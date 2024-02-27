@@ -1,0 +1,74 @@
+[
+  {
+    "file_name": "大宗商品期货数据",
+    "sheet_name": "上海原油",
+    "period": "daily",
+    "sheet_description": "上海原油期货数据",
+    "skiprows": [
+      0,
+      1
+    ],
+    "columns": [
+      "日期",
+      "开盘价",
+      "最高价",
+      "最低价",
+      "收盘价",
+      "成交量"
+    ]
+  },
+  {
+    "file_name": "大宗商品期货数据",
+    "sheet_name": "工业硅",
+    "period": "daily",
+    "sheet_description": "工业硅期货数据",
+    "skiprows": [
+      0,
+      1
+    ],
+    "columns": [
+      "日期",
+      "开盘价",
+      "最高价",
+      "最低价",
+      "收盘价",
+      "成交量"
+    ]
+  },
+  {
+    "file_name": "大宗商品期货数据",
+    "sheet_name": "玉米",
+    "period": "daily",
+    "sheet_description": "玉米期货数据",
+    "skiprows": [
+      0,
+      1
+    ],
+    "columns": [
+      "日期",
+      "开盘价",
+      "最高价",
+      "最低价",
+      "收盘价",
+      "成交量"
+    ]
+  },
+  {
+    "file_name": "大宗商品期货数据",
+    "sheet_name": "螺纹钢",
+    "period": "daily",
+    "sheet_description": "螺纹钢期货数据",
+    "skiprows": [
+      0,
+      1
+    ],
+    "columns": [
+      "日期",
+      "开盘价",
+      "最高价",
+      "最低价",
+      "收盘价",
+      "成交量"
+    ]
+  }
+]
