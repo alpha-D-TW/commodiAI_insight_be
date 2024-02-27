@@ -1,0 +1,11 @@
+.idea
+
+__pycache__
+venv
+volume
+
+embeddings_model
+
+chart_chat_fe
+
+.DS_Store
