@@ -31,6 +31,7 @@ secrets = {
     "wenxinApiSecret": os.getenv("WENXIN_API_SECRET"),
     "wenxinAccessToken": os.getenv("WENXIN_ACCESS_TOKEN"),
     "qwenApiKey": os.getenv("QWEN_API_KEY"),
+    "openaiApiKey": os.getenv("OPEN_AI_API_KEY"),
 }
 
 
