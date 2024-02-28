@@ -1,135 +1,26 @@
 [
   {
-    "category": "Economic Growth Indicators",
-    "sheets": [
-      "Growth of Fixed Asset Investment",
-      "Total Import and Export Value",
-      "Revenue from Software Business",
-      "Gross Domestic Product (GDP)"
-    ],
+    "category": "大宗商品价格",
+    "sheets": [],
     "questions": [
-      "What is the trend of the growth of national income and GDP in recent years?",
-      "How has the value-added of primary, secondary, and tertiary industries changed in each year?",
-      "What is the change in per capita GDP in recent years?",
-      "What is the difference between state-owned and state-controlled fixed asset investment and private fixed asset investment?",
-      "What is the cumulative growth and difference of fixed asset investment in primary, secondary, and tertiary industries in the past few months?",
-      "Which type of fixed asset investment in primary, secondary, and tertiary industries has grown the fastest? Which type has relatively low growth?",
-      "What is the trend of China's import and export value in recent years?",
-      "What are the current monthly and cumulative import and export values in China, and how do they compare with the same period last year?",
-      "What is the growth trend of revenue from software business, software product revenue, information technology service revenue, information security revenue, and embedded system software revenue?",
-      "What is the cumulative value and growth rate of software service exports? How does it compare with the same period last year?",
-      "Which month has the fastest growth in revenue from software business? Which month has the highest amount of software service exports?"
+      "最近原油的收盘价走势如何?",
+      "我想了解最近三个月螺纹钢期货的价格走势"
     ]
   },
   {
-    "category": "Labor Market Indicators",
-    "sheets": [
-      "Urban Survey Unemployment Rate",
-      "Employment and Wages"
-    ],
+    "category": "大宗商品研究报告",
+    "sheets": [],
     "questions": [
-      "What is the trend of the national urban survey unemployment rate in the past few months?",
-      "How has the urban survey unemployment rate changed for different population groups (local registered population, non-local registered population, 16-24 age group, 25-59 age group)?",
-      "What is the change in the urban survey unemployment rate for 31 major cities in the past few months?",
-      "How has the average weekly working hours for enterprise employees changed?",
-      "What were the top three industries with the most urban unit employment in 2022?",
-      "What is the trend of total wages for urban unit employees in agriculture, forestry, animal husbandry, and fishery industries from 2013 to 2022?",
-      "What is the trend of urban unit employment in agriculture, forestry, animal husbandry, and fishery industries from 2013 to 2022?"
+      "分析一下螺纹钢短期内的趋势，从供给端、需求端和成本端三个方向来分析",
+      "工业硅最新的出口情况？"
     ]
   },
   {
-    "category": "Inflation Indicators",
-    "sheets": [
-      "Consumer Price Index (CPI)",
-      "Consumer Spending Level"
-    ],
+    "category": "大宗商品资讯",
+    "sheets": [],
     "questions": [
-      "What is the overall change in the consumer price index?",
-      "How has the consumer price index for food changed?",
-      "Which category of consumer price index has been on the rise in the past few months? Which category has been relatively stable?",
-      "Which category of consumer price index has had the greatest impact on overall inflation?",
-      "What is the trend of consumer spending level index over the past decade?",
-      "How has the gap between rural and urban consumer spending levels changed over the past decade?",
-      "Using 1978 as a base year, what is the trend of urban consumer spending level index over the past decade?"
-    ]
-  },
-  {
-    "category": "Real Estate Indicators",
-    "sheets": [
-      "Real Estate"
-    ],
-    "questions": [
-      "What is the trend of real estate development investment in recent years?",
-      "How has employment in real estate development companies changed in recent years?",
-      "What is the change in sales area and sales volume of commercial housing in recent years?",
-      "What is the change in sales area and sales volume of residential housing in recent years?",
-      "What is the trend of undeveloped land area held by real estate development companies in recent years?",
-      "What is the change in land acquisition area and transaction price of real estate development companies in recent years?",
-      "What are the regional differences in real estate development investment?"
-    ]
-  },
-  {
-    "category": "Financial Indicators",
-    "sheets": [
-      "National Fiscal Revenue and Expenditure"
-    ],
-    "questions": [
-      "What is the cumulative growth rate of national fiscal revenue?",
-      "What is the cumulative growth rate of national fiscal expenditure (excluding debt repayment)?",
-      "What is the situation of national fiscal revenue and expenditure?"
-    ]
-  },
-  {
-    "category": "Monetary Market Indicators",
-    "sheets": [
-      "Money Supply",
-      "RMB Exchange Rate"
-    ],
-    "questions": [
-      "What is the year-on-year growth rate of money supply (M2) and quasi-money supply?",
-      "What is the year-on-year growth rate of money supply (M1)?",
-      "How does circulating cash (M0) supply change compared to the previous month?",
-      "How does RMB exchange rate against USD, JPY, HKD, and EUR change over time?"
-    ]
-  },
-  {
-    "category": "Economic Activity Indicators",
-    "sheets": [
-      "Transportation"
-    ],
-    "questions": [
-      "What is the overall trend of freight and passenger transportation in China?",
-      "What are the differences in cargo transportation among different modes of transportation such as railway, highway, waterway, and aviation?",
-      "What are the differences in passenger transportation among different modes of transportation such as railway, highway, waterway, and aviation?"
-    ]
-  },
-  {
-    "category": "Manufacturing Indicators",
-    "sheets": [
-      "Purchasing Managers' Index (PMI)"
-    ],
-    "questions": [
-      "What is the overall operating situation for manufacturing and non-manufacturing industries?",
-      "Are there any correlations among different indicators in manufacturing industry such as production index, new order index, backlog order index, and purchasing volume index?",
-      "Are there any correlations among different indicators in non-manufacturing industry such as business activity index, new order index, backlog order index, and sales price index?"
-    ]
-  },
-  {
-    "category": "Population and Income-Expense Indicators",
-    "sheets": [
-      "Population",
-      "Per Capita Income",
-      "Per Capita Expenditure"
-    ],
-    "questions": [
-      "What is the trend of China's population structure? For example, has there been a change in the proportion of urban and rural populations?",
-      "What are China's birth rate and death rate? Is there natural population growth?",
-      "How is China's dependency ratio? Has there been a change in the proportion of young and elderly people?",
-      "What is the trend of per capita disposable income for residents in recent years?",
-      "What are the differences between per capita disposable income for urban residents and rural residents?",
-      "How have wage income, net business income, net property income, and net transfer income grown in per capita disposable income for residents?",
-      "Has Gini coefficient changed for per capita disposable income for residents over recent years?",
-      "What is the trend of per capita consumer spending?"
+      "今年什么因素影响大豆产量比较严重？",
+      "最近有什么铁矿石相关的重要新闻或事件值得关注吗？"
     ]
   }
 ]
