@@ -1,5 +1,5 @@
 import os
-from typing import Annotated
+from typing import Annotated, Optional
 from urllib.request import Request
 
 from fastapi import FastAPI, UploadFile, Depends, Form
@@ -124,13 +124,13 @@ async def get_histories_api(db: Session = Depends(get_db)):
 
 
 @app.get("/sample-questions")
-async def get_sample_questions_api(is_english: bool | None = None):
+async def get_sample_questions_api(is_english: Optional[bool] = None):
     file_name = "data_config/sample_questions_en.json" if is_english else "data_config/sample_questions_cn.json"
     return load_json_file(os.path.join(os.path.dirname(__file__), file_name))
 
 
 @app.get("/knowledge/batch-data/{answer_id}")
-async def get_batch_data_api(answer_id, model, is_english: bool | None = None, db: Session = Depends(get_db)):
+async def get_batch_data_api(answer_id, model, is_english: Optional[bool] = None, db: Session = Depends(get_db)):
     answer = get_answer(db, answer_id)
     question = get_question(db, answer.question_id)
     if answer.type == ChatAnswerType.JSON and answer.json_answer:

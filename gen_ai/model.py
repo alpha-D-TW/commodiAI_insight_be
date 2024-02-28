@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel
 
 
@@ -5,7 +7,7 @@ class ChatItem(BaseModel):
     chatSessionId: str
     question: str
     model: str
-    existingQuestionId: str | None = None
+    existingQuestionId: Optional[str] = None
 
 
 class ChatAnalysisItem(BaseModel):
