@@ -39,6 +39,7 @@ def chat_refresh_token(question, messages):
 class ChatWenxin(ChatBot):
     @override
     def infer(self, question: str, history: list = None):
+        print(f'start inference use qianwen, question is {question}')
         last_message = {"role": "user", "content": question}
         messages = [last_message]
         if is_not_empty_array(history):

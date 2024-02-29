@@ -24,7 +24,7 @@ def _bulk_ingest_embeddings(
         index_name: str,
         embedding_result: List[List[float]],
         docs: List[Document],
-        file_params: dict,
+        file_params,
         mapping: dict,
         max_chunk_bytes: Optional[int] = 1 * 1024 * 1024,
 ) -> List[str]:
@@ -32,6 +32,7 @@ def _bulk_ingest_embeddings(
     return_ids = []
     texts = [doc.page_content for doc in docs]
     metadatas = [doc.metadata for doc in docs]
+    params = [param for param in file_params]
 
     try:
         client.indices.get(index=index_name)
@@ -40,6 +41,7 @@ def _bulk_ingest_embeddings(
 
     for i, text in enumerate(texts):
         metadata = metadatas[i] if metadatas and metadatas[i] else {}
+        param = params[i] if params and params[i] else {}
         _id = str(uuid.uuid4())
         request = {
             "_id": _id,
@@ -48,14 +50,13 @@ def _bulk_ingest_embeddings(
             "vector_field": embedding_result[i],
             "text": text,
             "metadata": metadata,
+            "page_number": metadata['page_number'],
         }
-
-        requests.append({**request, **file_params})
+        requests.append({**request, **param})
         return_ids.append(_id)
     bulk(client, requests, max_chunk_bytes=max_chunk_bytes)
     client.indices.refresh(index=index_name)
     return return_ids
-
 
 class OpenSearchVectorSearch:
     def __init__(self, index_name):
@@ -77,7 +78,7 @@ class OpenSearchVectorSearch:
     def add_texts(
             self,
             docs: List[Document],
-            file_params: dict,
+            file_params
     ) -> List[str]:
         texts = [doc.page_content for doc in docs]
         embedding_result = self.embedding_function.embed_documents(list(texts))
@@ -105,7 +106,6 @@ class OpenSearchVectorSearch:
         )
 
         response = self.client.search(index=self.index_name, body=search_query)
-
         hits = [hit for hit in response["hits"]["hits"]]
 
         return hits

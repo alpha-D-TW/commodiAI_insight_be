@@ -14,13 +14,13 @@ from gen_ai.util import check_params_available, load_json
 
 def chat_pdf(model, question, history):
     dates = chat_date_params(model, question)
-    context = search_pdf_doc(question, query_by_params(dates, None))
+    [context, reference] = search_pdf_doc(question, query_by_params(dates, None))
     final_question = prompt_context_chat(question, context)
     _, answer = chat_func(model, final_question, history)
     return {
         "type": ChatAnswerType.STRING,
         "question": final_question,
-        "answer": answer,
+        "answer": answer + "\r\n" + reference,
     }
 
 

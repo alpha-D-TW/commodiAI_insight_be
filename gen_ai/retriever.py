@@ -5,7 +5,9 @@ from gen_ai.util import is_not_empty_array, load_json
 def search_pdf_doc(question, pre_filter):
     client = OpenSearchVectorSearch(get_os_index())
     result = client.similarity_search_with_score(question, pre_filter=pre_filter)
-    page_content = ""
+
+    content = ""
+    reference = ""
     if is_not_empty_array(result):
         sorted_doc = sorted(
             result,
@@ -15,8 +17,11 @@ def search_pdf_doc(question, pre_filter):
             ),
             reverse=True,
         )
-        page_content = sorted_doc[0]["_source"]["text"].replace("\n", "")
-    return page_content
+        ## 只取了第一个
+        source_ = sorted_doc[0]["_source"]
+        content = source_["text"].replace("\n", "")
+        reference = f'《{source_["filename"]}》第{source_["page_number"]}页'
+    return [content, reference]
 
 
 def search_json_doc(question):

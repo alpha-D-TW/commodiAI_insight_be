@@ -10,7 +10,7 @@ envs = {
     "opensearch_pdf_index": os.getenv("OPENSEARCH_PDF_INDEX", "pdf-index"),
     "opensearch_json_index": os.getenv("OPENSEARCH_JSON_INDEX", "json-index"),
     "text_splitter_chunk_size": int(os.getenv("SPLITTER_CHUNK_SIZE", 1000)),
-    "text_splitter_chunk_overlap": int(os.getenv("SPLITTER_CHUNK_OVERLAP", 200)),
+    "text_splitter_chunk_overlap": int(os.getenv("SPLITTER_CHUNK_OVERLAP", 100)),
     "embedding_model_name": os.getenv(
         "EMBEDDING_MODEL_NAME", "./embeddings_model/BAAI_bge-base-zh-v1.5"
     ),

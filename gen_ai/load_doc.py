@@ -5,7 +5,8 @@ from typing import List
 
 import pandas as pd
 from dateutil.relativedelta import relativedelta
-from langchain.document_loaders import PyPDFLoader, S3FileLoader
+from langchain_community.document_loaders import PyPDFLoader
+from gen_ai.s3.s3_pdf_file import S3PdfFileLoader
 from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
@@ -21,13 +22,14 @@ def load_pdf_from_s3(s3_key):
     bucket_name = envs.get('s3_bucket')
     if bucket_name:
         if is_local_env():
-            loader = S3FileLoader(bucket_name, s3_key,
+            loader = S3PdfFileLoader(bucket_name, s3_key,
                                   aws_access_key_id="test",
                                   aws_secret_access_key="test",
                                   endpoint_url=envs.get("s3_endpoint"),
-                                  region_name=envs.get('aws_region'))
+                                  region_name=envs.get('aws_region')
+                                  )
         else:
-            loader = S3FileLoader(bucket_name, s3_key)
+            loader = S3PdfFileLoader(bucket_name, s3_key)
         return loader
     return None
 
@@ -46,8 +48,7 @@ def load_json_by_path(s3_key):
 def load_pdf_doc(s3_key, filename, model):
     print(f"start load_pdf_doc at: {datetime.now()}")
     documents = load_pdf_by_path(s3_key)
-    contents = "\n".join([doc.page_content for doc in documents])
-    merged_document = Document(page_content=contents, metadata=documents[0].metadata)
+
     print(f"pdf documents loaded at: {datetime.now()}")
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=envs.get("text_splitter_chunk_size"),
@@ -55,16 +56,35 @@ def load_pdf_doc(s3_key, filename, model):
         length_function=len,
         is_separator_regex=False,
     )
-    docs = text_splitter.split_documents([merged_document])
+    docs = text_splitter.split_documents(documents)
 
     print(f"start add_documents at: {datetime.now()}")
     client = OpenSearchVectorSearch(get_os_index())
-    file_params = get_file_params(filename, docs[0], model)
+
+    file_params=get_file_params(filename, docs, model)
     result = client.add_texts(docs=docs, file_params=file_params)
     print(f"end add_documents at: {datetime.now()}")
     print(f"end load_pdf_doc at: {datetime.now()}")
     return result
 
+def get_file_params(file_name, docs, model):
+    params_list=[]
+    for doc in docs:
+        params_list.append(get_file_param(file_name, doc, model))
+    return params_list
+
+def get_file_param(file_name, doc, model):
+    question = prompt_date_json(context=doc.page_content)
+    dates = chat_for_params_with_retry(model, question, DATE_RANGE_PARAMS)
+    final_dates = {
+        key: dates[key] if key in dates else None for key in DATE_RANGE_PARAMS
+    }
+    return {
+        **final_dates,
+        "file_type": "pdf",
+        "filename": file_name,
+        "knowledge_type": "weekly_report",
+    }
 
 def load_json_doc(s3_key, filename):
     client = OpenSearchVectorSearch(get_os_index("json"))
@@ -86,22 +106,6 @@ def load_json_doc(s3_key, filename):
     print(f"end add_documents at: {datetime.now()}")
     print(f"end load_json_doc at: {datetime.now()}")
     return result
-
-
-def get_file_params(filename, first_doc, model):
-    question = prompt_date_json(context=first_doc.page_content)
-    dates = chat_for_params_with_retry(model, question, DATE_RANGE_PARAMS)
-    final_dates = {
-        key: dates[key] if key in dates else None for key in DATE_RANGE_PARAMS
-    }
-    return {
-        **final_dates,
-        **first_doc.metadata,
-        "file_type": "pdf",
-        "filename": filename,
-        "knowledge_type": "weekly_report",
-    }
-
 
 def load_csv_data(s3_key, columns, date_range_years):
     date_column = columns[0]
