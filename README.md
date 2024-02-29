@@ -38,3 +38,16 @@ docker compose up -d
 ```
 docker-compose exec backend alembic upgrade head
 ```
+
+### How to run with docker in server(temp)
+
+#### 1. edit gen_ai/wenxin/config.py port
+port num in file docker-compose.dev.yml
+
+#### 2. edit gen_ai/main.py port
+port num in file docker-compose.dev.yml
+
+#### 3. add api key in .env file
+
+#### 4. Run docker
+`docker-compose -f docker-compose.dev.yml up`
