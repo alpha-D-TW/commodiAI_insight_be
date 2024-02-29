@@ -1,7 +1,7 @@
 from langchain.prompts import PromptTemplate
 
 prompt_analyse_template = """
-你是一个钢铁行业专家，请对下面数据进行简短而专业的走势分析。{language_requirement}
+你是一个大宗商品期货分析师，请对下面数据进行简短而专业的走势分析。{language_requirement}
 
 数据表示：
 {question}

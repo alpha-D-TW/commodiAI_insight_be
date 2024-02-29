@@ -21,6 +21,7 @@ class ChatOpenAIAPI(ChatBot):
             print(f'Question is {question}')
             response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
+                temperature=0.01,
                 messages=[
                     {"role": "user", "content": question},
                 ]
